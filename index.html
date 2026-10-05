@@ -28,7 +28,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .copy h1 em{font-style:normal;color:var(--rose2)}
 .loupe{position:absolute;width:var(--d,210px);height:var(--d,210px);border-radius:50%;border:3px solid #fff;box-shadow:0 10px 40px rgba(0,0,0,.45),inset 0 0 28px rgba(255,255,255,.25);background-repeat:no-repeat;z-index:2;cursor:grab;transition:filter .5s}
 .loupe::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.35),transparent 38%);pointer-events:none}
-.tag{position:absolute;left:50%;transform:translateX(-50%);bottom:-34px;white-space:nowrap;font-size:11px;background:rgba(255,255,255,.92);color:var(--plum);padding:3px 12px;border-radius:99px}
+.tag{position:absolute;left:50%;transform:translateX(-50%);bottom:14px;white-space:nowrap;font-size:11px;background:rgba(255,255,255,.92);color:var(--plum);padding:3px 12px;border-radius:99px}
 .hint{position:absolute;left:0;right:0;bottom:152px;text-align:center;color:#fff;font-size:12px;letter-spacing:.08em;z-index:3;text-shadow:0 1px 8px rgba(0,0,0,.6);pointer-events:none;transition:opacity .6s}
 .ctrl{position:absolute;left:16px;right:16px;bottom:max(14px,env(safe-area-inset-bottom));z-index:3;color:#fff}
 .sw{display:flex;gap:8px;justify-content:center;margin-bottom:10px}
@@ -65,6 +65,12 @@ footer{padding:26px 18px 90px;font-size:12px;color:#7a6469;max-width:880px;margi
 .reveal.on{opacity:1;transform:none}
 @media(min-width:760px){.copy{top:78px;left:48px;right:48px}.copy h1{max-width:12em}.ctrl{left:48px;right:48px}.top{padding:20px 48px 0}.sw button{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.reveal{transition:none}}
+.badges{display:flex;gap:8px;margin-top:12px}
+.bd{flex:1;background:rgba(255,255,255,.94);color:var(--plum);border-radius:14px;padding:7px 8px;text-align:center;text-shadow:none;box-shadow:0 6px 18px rgba(0,0,0,.28);border:1px solid #f1d9a8}
+.bd strong{display:block;font-size:clamp(17px,5vw,24px);line-height:1.25;color:#b3566a}
+.bd span{display:block;font-size:11px;line-height:1.35}
+.bsrc{font-size:10px;margin-top:4px;opacity:.9}
+@media(min-width:760px){.badges{max-width:520px}}
 </style>
 </head>
 <body>
@@ -76,6 +82,8 @@ footer{padding:26px 18px 90px;font-size:12px;color:#7a6469;max-width:880px;margi
   <div class="copy">
     <p class="eyebrow">毛穴ケア専門・完全貸切</p>
     <h1 class="serif">毛穴のお悩みは、<br><em>近づいて</em>見ると、<br>相談しやすくなる。</h1>
+    <div class="badges"><div class="bd"><strong>🏆 2年連続</strong><span>毛穴コンテスト<br>上位入賞</span></div><div class="bd"><strong>リピート率98%</strong><span>完全貸切サロン</span></div></div>
+    <p class="bsrc">※ お店のInstagramプロフィールより</p>
   </div>
   <div class="loupe" id="loupe" aria-label="拡大して見るルーペ（ドラッグできます）"><span class="tag" id="tag">ケア前のイメージ</span></div>
   <p class="hint" id="hint">▼ 丸いルーペを、指でうごかしてみてください</p>
@@ -153,7 +161,10 @@ footer{padding:26px 18px 90px;font-size:12px;color:#7a6469;max-width:880px;margi
   var hero=document.getElementById('hero'),stage=document.getElementById('stage'),L=document.getElementById('loupe'),tag=document.getElementById('tag'),hint=document.getElementById('hint');
   var imgs={b:'assets/skin_before.png',a:'assets/skin_after.png'},mode='b',Z=1.9,x=0,y=0,user=false,t0=performance.now(),drag=false,IW=1408,IH=768;
   function dims(){var W=hero.clientWidth,H=hero.clientHeight,s=Math.max(W/IW,H/IH);return{W:W,H:H,s:s,ox:(W-IW*s)/2,oy:(H-IH*s)/2}}
-  function size(){var d=Math.round(Math.min(hero.clientWidth*.56,260));L.style.setProperty('--d',d+'px');return d}
+  var copy=document.querySelector('.copy');
+  function top0(){return copy.offsetTop+copy.offsetHeight+10}
+  function bot0(){return hero.clientHeight-152-40}
+  function size(){var d=Math.round(Math.min(hero.clientWidth*.56,260,Math.max(110,bot0()-top0()-4)));L.style.setProperty('--d',d+'px');return d}
   function draw(){
     var m=dims(),d=L.offsetWidth;
     L.style.left=(x-d/2)+'px';L.style.top=(y-d/2)+'px';
@@ -164,7 +175,7 @@ footer{padding:26px 18px 90px;font-size:12px;color:#7a6469;max-width:880px;margi
     L.style.backgroundPosition=(-px)+'px '+(-py)+'px';
     L.style.filter=mode==='b'?'contrast(1.12) saturate(1.05)':'brightness(1.04) saturate(1.02)';
   }
-  function bounds(){var d=L.offsetWidth,W=hero.clientWidth,H=hero.clientHeight;return{minx:d/2+6,maxx:W-d/2-6,miny:Math.max(d/2+6,H*.3),maxy:H*.5}}
+  function bounds(){var d=L.offsetWidth,W=hero.clientWidth;return{minx:d/2+6,maxx:W-d/2-6,miny:top0()+d/2,maxy:Math.max(top0()+d/2,bot0()-d/2)}}
   function clamp(){var b=bounds();x=Math.min(b.maxx,Math.max(b.minx,x));y=Math.min(b.maxy,Math.max(b.miny,y))}
   function auto(t){
     if(!user){var b=bounds(),k=(t-t0)/1000;x=(b.minx+b.maxx)/2+Math.sin(k*.9)*(b.maxx-b.minx)*.36;y=(b.miny+b.maxy)/2+Math.sin(k*.6+1)*(b.maxy-b.miny)*.45;draw()}
@@ -179,7 +190,7 @@ footer{padding:26px 18px 90px;font-size:12px;color:#7a6469;max-width:880px;margi
   function set(m){mode=m;document.getElementById('b1').setAttribute('aria-pressed',m==='b');document.getElementById('b2').setAttribute('aria-pressed',m==='a');tag.textContent=m==='b'?'ケア前のイメージ':'ケア後のイメージ';draw()}
   document.getElementById('b1').onclick=function(){set('b')};
   document.getElementById('b2').onclick=function(){set('a')};
-  size();x=hero.clientWidth/2;y=hero.clientHeight*.5;draw();
+  size();x=hero.clientWidth/2;y=(top0()+bot0())/2;draw();
   window.addEventListener('resize',function(){size();clamp();draw()});
   if(!matchMedia('(prefers-reduced-motion:reduce)').matches)requestAnimationFrame(auto);
   /* chips */
