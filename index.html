@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>salon de Belle 宝塚｜毛穴ケア（ホームページ見本）</title>
+<style>
+:root{--rose:#e7a3ab;--rose2:#f7dde0;--plum:#4a2b33;--cream:#fff7f4;--ink:#3a2a2e;--line:#06c755}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--cream);color:var(--ink);line-height:1.8;-webkit-text-size-adjust:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.serif{font-family:"Hiragino Mincho ProN","Yu Mincho",serif}
+
+/* HERO */
+.hero{position:relative;height:100vh;height:100svh;min-height:520px;overflow:hidden;background:#2a1a1e;touch-action:pan-y}
+.stage{position:absolute;inset:0;background:url(assets/skin_after.png) center/cover no-repeat;filter:saturate(.95)}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,20,26,.62) 0%,rgba(40,20,26,.12) 34%,rgba(40,20,26,.12) 56%,rgba(40,20,26,.78) 100%);pointer-events:none}
+.top{position:absolute;left:0;right:0;top:0;padding:14px 16px 0;display:flex;justify-content:space-between;align-items:center;color:#fff;z-index:3}
+.logo{font-size:15px;letter-spacing:.14em}
+.logo small{display:block;font-size:10px;letter-spacing:.2em;opacity:.8}
+.demo{font-size:10px;border:1px solid rgba(255,255,255,.6);border-radius:99px;padding:2px 10px}
+.copy{position:absolute;left:16px;right:16px;top:62px;color:#fff;z-index:3;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.copy .eyebrow{font-size:12px;letter-spacing:.2em;color:var(--rose2)}
+.copy h1{font-size:clamp(25px,7.2vw,46px);line-height:1.38;margin-top:6px;font-weight:600}
+.copy h1 em{font-style:normal;color:var(--rose2)}
+.loupe{position:absolute;width:var(--d,210px);height:var(--d,210px);border-radius:50%;border:3px solid #fff;box-shadow:0 10px 40px rgba(0,0,0,.45),inset 0 0 28px rgba(255,255,255,.25);background-repeat:no-repeat;z-index:2;cursor:grab;transition:filter .5s}
+.loupe::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.35),transparent 38%);pointer-events:none}
+.tag{position:absolute;left:50%;transform:translateX(-50%);bottom:-34px;white-space:nowrap;font-size:11px;background:rgba(255,255,255,.92);color:var(--plum);padding:3px 12px;border-radius:99px}
+.hint{position:absolute;left:0;right:0;bottom:152px;text-align:center;color:#fff;font-size:12px;letter-spacing:.08em;z-index:3;text-shadow:0 1px 8px rgba(0,0,0,.6);pointer-events:none;transition:opacity .6s}
+.ctrl{position:absolute;left:16px;right:16px;bottom:max(14px,env(safe-area-inset-bottom));z-index:3;color:#fff}
+.sw{display:flex;gap:8px;justify-content:center;margin-bottom:10px}
+.sw button{flex:1;max-width:190px;border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.14);color:#fff;border-radius:99px;padding:8px 6px;font-size:13px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.sw button[aria-pressed="true"]{background:#fff;color:var(--plum);font-weight:700}
+.cta{display:block;text-align:center;background:var(--line);color:#fff;text-decoration:none;font-weight:700;border-radius:99px;padding:12px;font-size:15px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.ai{margin-top:7px;text-align:center;font-size:10.5px;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+
+/* SECTIONS */
+section{padding:56px 18px;max-width:880px;margin:0 auto}
+.h{font-size:11px;letter-spacing:.24em;color:#b8737d}
+h2{font-size:clamp(22px,5.6vw,30px);line-height:1.5;margin:4px 0 18px;color:var(--plum)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--rose);background:#fff;color:var(--plum);border-radius:99px;padding:8px 14px;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--plum);color:#fff;border-color:var(--plum)}
+.ans{margin-top:14px;background:#fff;border-left:4px solid var(--rose);border-radius:10px;padding:16px 16px;min-height:112px;box-shadow:0 6px 20px rgba(74,43,51,.07)}
+.ans b{display:block;margin-bottom:4px;color:var(--plum)}
+.ans a{color:#0a8f43;font-weight:700}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.fact{background:#fff;border-radius:14px;padding:16px;text-align:center;box-shadow:0 6px 20px rgba(74,43,51,.07)}
+.fact strong{display:block;font-size:26px;color:#c0687a;line-height:1.3}
+.fact span{font-size:12.5px}
+.note{font-size:12px;color:#7a6469;margin-top:10px}
+.steps{display:grid;gap:12px;counter-reset:s}
+.step{background:#fff;border-radius:14px;padding:14px 16px 14px 56px;position:relative;box-shadow:0 6px 20px rgba(74,43,51,.07)}
+.step::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;font-weight:700}
+.box{border:2px dashed var(--rose);border-radius:14px;padding:16px;background:#fff;font-size:14px}
+.ig{display:flex;justify-content:center}
+.ig iframe{width:100%;max-width:420px;height:560px;border:1px solid #eadfe0;border-radius:12px;background:#fff}
+.band{background:var(--plum);color:#f4e3e5;padding:44px 18px;text-align:center}
+.band a.cta{max-width:420px;margin:16px auto 0}
+footer{padding:26px 18px 90px;font-size:12px;color:#7a6469;max-width:880px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.reveal.on{opacity:1;transform:none}
+@media(min-width:760px){.copy{top:78px;left:48px;right:48px}.copy h1{max-width:12em}.ctrl{left:48px;right:48px}.top{padding:20px 48px 0}.sw button{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="hero">
+  <div class="stage" id="stage"></div>
+  <div class="shade"></div>
+  <div class="top"><div class="logo serif">salon de Belle<small>TAKARAZUKA</small></div><span class="demo">ホームページ見本</span></div>
+  <div class="copy">
+    <p class="eyebrow">毛穴ケア専門・完全貸切</p>
+    <h1 class="serif">毛穴のお悩みは、<br><em>近づいて</em>見ると、<br>相談しやすくなる。</h1>
+  </div>
+  <div class="loupe" id="loupe" aria-label="拡大して見るルーペ（ドラッグできます）"><span class="tag" id="tag">ケア前のイメージ</span></div>
+  <p class="hint" id="hint">▼ 丸いルーペを、指でうごかしてみてください</p>
+  <div class="ctrl">
+    <div class="sw" role="group" aria-label="ルーペの中の表示">
+      <button type="button" id="b1" aria-pressed="true">ケア前のイメージ</button>
+      <button type="button" id="b2" aria-pressed="false">ケア後のイメージ</button>
+    </div>
+    <a class="cta" href="https://lin.ee/eqYvIj2" target="_blank" rel="noopener">公式LINEで、ご予約・ご相談</a>
+    <p class="ai">※写真はAI生成のイメージです。実際の施術結果ではありません。</p>
+  </div>
+</header>
+
+<section class="reveal">
+  <p class="h">YOUR CONCERN</p>
+  <h2 class="serif">いまのお悩みを、ひとつえらぶと、<br>このページでの見方が出ます。</h2>
+  <div class="chips" id="chips">
+    <button class="chip" type="button" aria-pressed="false" data-k="0">毛穴が開いて見える</button>
+    <button class="chip" type="button" aria-pressed="false" data-k="1">黒ずみ・ざらつき</button>
+    <button class="chip" type="button" aria-pressed="false" data-k="2">40代、ずっと放置していた</button>
+    <button class="chip" type="button" aria-pressed="false" data-k="3">初めてで不安</button>
+    <button class="chip" type="button" aria-pressed="false" data-k="4">商品も見たい</button>
+  </div>
+  <div class="ans" id="ans"><b>お悩みをタップしてください</b>お店のInstagramで案内されている内容に沿って、見る場所をご案内します。</div>
+  <p class="note">※ 施術の効果をお約束するものではありません。肌の状態には個人差があります。</p>
+</section>
+
+<section class="reveal">
+  <p class="h">TRACK RECORD</p>
+  <h2 class="serif">お店のInstagramに、すでにある実績を、<br>ここにまとめます。</h2>
+  <div class="facts">
+    <div class="fact"><strong>2年連続</strong><span>毛穴コンテスト上位入賞<br>（プロフィールより）</span></div>
+    <div class="fact"><strong>98%</strong><span>リピート率の完全貸切サロン<br>（まつ毛・眉毛側プロフィールより）</span></div>
+    <div class="fact"><strong>826件</strong><span>毛穴アカウントの投稿数<br>（2026年10月5日時点）</span></div>
+  </div>
+  <p class="note">※ 数字・表記は、お店のInstagramのプロフィールから転記しました。正式版では、お店の確認後に公開します。</p>
+</section>
+
+<section class="reveal">
+  <p class="h">HOW TO BOOK</p>
+  <h2 class="serif">予約は、LINEひとつ。<br>先に、このページで読めます。</h2>
+  <div class="steps">
+    <div class="step"><b>このページで、見る</b><br>料金、ご予約方法、注意事項、道案内を、ご来店の前に読めます。</div>
+    <div class="step"><b>公式LINEで、送る</b><br>ご希望の日にちをLINEで送ります。今の公式LINEに、そのままつながります。</div>
+    <div class="step"><b>ご来店</b><br>完全貸切のお部屋です。近隣のコインパーキングの案内も、ここにまとめます。</div>
+  </div>
+</section>
+
+<section class="reveal">
+  <p class="h">PRICE &amp; NOTICE</p>
+  <h2 class="serif">料金と注意事項</h2>
+  <div class="box">料金・施術時間・キャンセルについては、<b>お店のご確認を、いただいてから掲載します。</b><br>（現在のInstagramのハイライト「料金」「ご予約方法」「注意事項」「道案内」の内容を、そのまま整理して載せる予定です）</div>
+</section>
+
+<section class="reveal">
+  <p class="h">INSTAGRAM</p>
+  <h2 class="serif">最新の投稿は、Instagramから、そのまま。</h2>
+  <div class="ig"><iframe src="https://www.instagram.com/sachiko.keana_takarazuka/embed" loading="lazy" title="Instagram 毛穴アカウント" scrolling="no"></iframe></div>
+  <p class="note">※ 写真はコピーせず、Instagram公式の埋め込みで表示しています。載せてほしくない場合は、すぐに外します。</p>
+</section>
+
+<div class="band">
+  <p class="serif" style="font-size:20px;line-height:1.7">ご予約・ご相談は、<br>いつもの公式LINEから。</p>
+  <a class="cta" href="https://lin.ee/eqYvIj2" target="_blank" rel="noopener">公式LINEを開く</a>
+</div>
+
+<footer>
+  <p>このページは、第二ビジネス研究所（明田 充弘）が、お店のInstagramの公開情報をもとに作った<b>ホームページ見本</b>です。お店の公式ページではありません。</p>
+  <p style="margin-top:6px">ヒーローの画像（肌）はAI生成のイメージで、実際の施術結果ではありません。料金・営業時間などは確認できていないため載せていません。</p>
+  <p style="margin-top:6px"><a href="https://second-business-lab.jp/">https://second-business-lab.jp/</a></p>
+</footer>
+
+<script>
+(function(){
+  var hero=document.getElementById('hero'),stage=document.getElementById('stage'),L=document.getElementById('loupe'),tag=document.getElementById('tag'),hint=document.getElementById('hint');
+  var imgs={b:'assets/skin_before.png',a:'assets/skin_after.png'},mode='b',Z=1.9,x=0,y=0,user=false,t0=performance.now(),drag=false,IW=1408,IH=768;
+  function dims(){var W=hero.clientWidth,H=hero.clientHeight,s=Math.max(W/IW,H/IH);return{W:W,H:H,s:s,ox:(W-IW*s)/2,oy:(H-IH*s)/2}}
+  function size(){var d=Math.round(Math.min(hero.clientWidth*.56,260));L.style.setProperty('--d',d+'px');return d}
+  function draw(){
+    var m=dims(),d=L.offsetWidth;
+    L.style.left=(x-d/2)+'px';L.style.top=(y-d/2)+'px';
+    var bw=IW*m.s*Z,bh=IH*m.s*Z;
+    var px=((x-m.ox)/m.s)*m.s*Z-d/2,py=((y-m.oy)/m.s)*m.s*Z-d/2;
+    L.style.backgroundImage='url('+imgs[mode]+')';
+    L.style.backgroundSize=bw+'px '+bh+'px';
+    L.style.backgroundPosition=(-px)+'px '+(-py)+'px';
+    L.style.filter=mode==='b'?'contrast(1.12) saturate(1.05)':'brightness(1.04) saturate(1.02)';
+  }
+  function bounds(){var d=L.offsetWidth,W=hero.clientWidth,H=hero.clientHeight;return{minx:d/2+6,maxx:W-d/2-6,miny:Math.max(d/2+6,H*.3),maxy:H*.5}}
+  function clamp(){var b=bounds();x=Math.min(b.maxx,Math.max(b.minx,x));y=Math.min(b.maxy,Math.max(b.miny,y))}
+  function auto(t){
+    if(!user){var b=bounds(),k=(t-t0)/1000;x=(b.minx+b.maxx)/2+Math.sin(k*.9)*(b.maxx-b.minx)*.36;y=(b.miny+b.maxy)/2+Math.sin(k*.6+1)*(b.maxy-b.miny)*.45;draw()}
+    requestAnimationFrame(auto)}
+  function pt(e){var r=hero.getBoundingClientRect();var p=e.touches?e.touches[0]:e;return{x:p.clientX-r.left,y:p.clientY-r.top}}
+  function down(e){drag=true;user=true;hint.style.opacity=0;e.preventDefault&&e.preventDefault()}
+  function move(e){if(!drag)return;var p=pt(e);x=p.x;y=p.y;clamp();draw();e.preventDefault&&e.preventDefault()}
+  function up(){drag=false}
+  L.addEventListener('mousedown',down);window.addEventListener('mousemove',move);window.addEventListener('mouseup',up);
+  L.addEventListener('touchstart',down,{passive:false});window.addEventListener('touchmove',move,{passive:false});window.addEventListener('touchend',up);
+  hero.addEventListener('mousemove',function(e){if(!drag&&!('ontouchstart' in window)){user=true;hint.style.opacity=0;var p=pt(e);x=p.x;y=p.y;clamp();draw()}});
+  function set(m){mode=m;document.getElementById('b1').setAttribute('aria-pressed',m==='b');document.getElementById('b2').setAttribute('aria-pressed',m==='a');tag.textContent=m==='b'?'ケア前のイメージ':'ケア後のイメージ';draw()}
+  document.getElementById('b1').onclick=function(){set('b')};
+  document.getElementById('b2').onclick=function(){set('a')};
+  size();x=hero.clientWidth/2;y=hero.clientHeight*.5;draw();
+  window.addEventListener('resize',function(){size();clamp();draw()});
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches)requestAnimationFrame(auto);
+  /* chips */
+  var A=[["毛穴が開いて見える","ご予約の前に、このページの「ルーペ」で、近くで見たときの状態のイメージを見てもらえます。ご相談は、公式LINEから。"],["黒ずみ・ざらつき","施術の内容と流れは、お店のInstagramのハイライトにある説明を、整理して載せます（お店の確認後）。"],["40代、ずっと放置していた","「放置していたけれど、今からでも」という方向けの案内を、ご来店前に読めるようにします。お肌の状態のご相談は、LINEで。"],["初めてで不安","ご予約方法・注意事項・道案内を、来店の前に、順番に読めます。完全貸切のお部屋です（プロフィールより）。"],["商品も見たい","毛穴専用アイテムの紹介を、ハイライトの内容をもとに、このページにまとめます。ご購入は、今の公式LINEのままです。"]];
+  var chips=[].slice.call(document.querySelectorAll('.chip')),ans=document.getElementById('ans');
+  chips.forEach(function(c){c.onclick=function(){chips.forEach(function(o){o.setAttribute('aria-pressed','false')});c.setAttribute('aria-pressed','true');var a=A[+c.dataset.k];ans.innerHTML='<b>'+a[0]+'</b>'+a[1]+'<br><a href="https://lin.ee/eqYvIj2" target="_blank" rel="noopener">公式LINEで相談する →</a>'}});
+  /* reveal */
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12}):null;
+  [].slice.call(document.querySelectorAll('.reveal')).forEach(function(s){io?io.observe(s):s.classList.add('on')});
+})();
+</script>
+</body>
+</html>
